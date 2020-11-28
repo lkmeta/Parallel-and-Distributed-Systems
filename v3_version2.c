@@ -78,7 +78,6 @@ double calculateExecutionTime()
     return dSeconds + dNanoSeconds;
 }
 
-
 int main(int argc, char *argv[])
 {
     int ret_code;
@@ -156,7 +155,6 @@ int main(int argc, char *argv[])
     if (f != stdin)
         fclose(f);
 
-
     const uint32_t nnz = nz;
     const uint32_t n = N;
 
@@ -173,8 +171,7 @@ int main(int argc, char *argv[])
     // for (i = 0; i < n+1; i++)
     //     fprintf(stdout, "%d ", csc_col[i]);
 
-
-    printf("Done with csc row and col...\n");
+    printf("CSC matrix has been created.\n");
 
     int counter = 0;
     int c3[(int)N];
@@ -197,16 +194,16 @@ int main(int argc, char *argv[])
             {
                 // k pointer in csc_row array
                 if (k > nnz - 1)
-                    continue;
+                    break;
                 //printf("k = %d\n", k);
                 for (uint32_t l = j + 1; l < csc_col[i]; l++)
                 {
                     if (csc_row[k] == csc_row[l])
                     {
                         counter += 1;
-                        c3[i - 1] += 1;
-                        c3[csc_row[j]] += 1;
-                        c3[csc_row[k]] += 1;
+                        // c3[i - 1] += 1;
+                        // c3[csc_row[j]] += 1;
+                        // c3[csc_row[k]] += 1;
                         //printf("csc_row[k] = %d\t", csc_row[k]);
                         //printf("csc_row[l] = %d\t", csc_row[l]);
                         //printf("\nFound Triangle with nodes: i j k = %d %d %d", i - 1, csc_row[j], csc_row[k]);
@@ -216,7 +213,7 @@ int main(int argc, char *argv[])
             }
         }
     }
-
+    double time = calculateExecutionTime();
     // printf("c3 = ");
     // for (int w = 0; w < N; w++)
     // {
@@ -224,13 +221,13 @@ int main(int argc, char *argv[])
     // }
     printf("Num of Triangles = %d ", counter);
 
-    printf("\nv3 running time: %f\n", calculateExecutionTime());
+    printf("\nv3 sequential running time: %f\n", time);
 
     free(I);
     free(J);
     free(val);
     free(csc_row);
     free(csc_col);
-    
+
     return 0;
 }
