@@ -23,7 +23,7 @@ test1:
 	./v3 no1.mtx
 	@printf "\n** Testing v3_cilk with no1.mtx\n"
 	./v3_cilk no1.mtx
-	@printf "\n** Testing v3_cilk with no1.mtx\n"
+	@printf "\n** Testing v3_openMP with no1.mtx\n"
 	./v3_openMP no1.mtx
 
 test2:
@@ -31,7 +31,7 @@ test2:
 	./v3 com-Youtube.mtx
 	@printf "\n** Testing v3_cilk with com-Youtube.mtx\n"
 	./v3_cilk com-Youtube.mtx
-	@printf "\n** Testing v3_cilk with com-Youtube.mtx\n"
+	@printf "\n** Testing v3_openMP with com-Youtube.mtx\n"
 	./v3_openMP com-Youtube.mtx
 	
 
