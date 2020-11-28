@@ -4,8 +4,7 @@
 #include <stdint.h>
 #include <time.h>
 #include <cilk/cilk.h>
-#include <pthread.h> 
-
+#include <pthread.h>
 
 #define BILLION 1000000000L;
 
@@ -80,7 +79,6 @@ double calculateExecutionTime()
 
     return dSeconds + dNanoSeconds;
 }
-
 
 int main(int argc, char *argv[])
 {
@@ -159,7 +157,6 @@ int main(int argc, char *argv[])
     if (f != stdin)
         fclose(f);
 
-
     const uint32_t nnz = nz;
     const uint32_t n = N;
 
@@ -176,8 +173,7 @@ int main(int argc, char *argv[])
     // for (i = 0; i < n+1; i++)
     //     fprintf(stdout, "%d ", csc_col[i]);
 
-
-    printf("Done with csc row and col...\n");
+    printf("CSC matrix has been created.\n");
 
     int counter = 0;
     int c3[(int)N];
@@ -187,33 +183,32 @@ int main(int argc, char *argv[])
     }
 
     printf("Start counting the triangles and start the time...\n");
-    clock_gettime(CLOCK_MONOTONIC, &start_time);
     pthread_mutex_t m; //define the lock
-    pthread_mutex_init(&m,NULL);
-    cilk_for (uint32_t i = 1; i < N - 1; i++)
+    pthread_mutex_init(&m, NULL);
+    clock_gettime(CLOCK_MONOTONIC, &start_time);
+    cilk_for(uint32_t i = 1; i < N - 1; i++)
     {
         // i pointer in csc_col array
         // printf("i = %d\t", i);
-        //pthread_mutex_lock(&m);
-        cilk_for (uint32_t j = csc_col[i - 1]; j < csc_col[i]; j++)
+        pthread_mutex_lock(&m);
+        for (uint32_t j = csc_col[i - 1]; j < csc_col[i]; j++)
         {
             // j pointer in (csc_row[i] - csc_row[i-1]) array
             // printf("j = %d", j);
-            pthread_mutex_lock(&m);
             for (uint32_t k = csc_col[csc_row[j]]; k < csc_col[csc_row[j] + 1]; k++)
             {
                 // k pointer in csc_row array
                 if (k > nnz - 1)
-                    continue;
+                    break;
                 //printf("k = %d\n", k);
                 for (uint32_t l = j + 1; l < csc_col[i]; l++)
                 {
                     if (csc_row[k] == csc_row[l])
                     {
                         counter += 1;
-                        c3[i - 1] += 1;
-                        c3[csc_row[j]] += 1;
-                        c3[csc_row[k]] += 1;
+                        // c3[i - 1] += 1;
+                        // c3[csc_row[j]] += 1;
+                        // c3[csc_row[k]] += 1;
                         //printf("csc_row[k] = %d\t", csc_row[k]);
                         //printf("csc_row[l] = %d\t", csc_row[l]);
                         //printf("\nFound Triangle with nodes: i j k = %d %d %d", i - 1, csc_row[j], csc_row[k]);
@@ -221,25 +216,26 @@ int main(int argc, char *argv[])
                     }
                 }
             }
-            pthread_mutex_unlock(&m);
         }
+        pthread_mutex_unlock(&m);
     }
+    double time = calculateExecutionTime();
 
     // printf("c3 = ");
     // for (int w = 0; w < N; w++)
     // {
     //     printf("%d ", c3[w]);
     // }
-    
+
     printf("Num of Triangles = %d ", counter);
 
-    printf("\nv3 running time: %f\n", calculateExecutionTime());
+    printf("\nv3 using OpenCilk running time: %f\n", time);
 
     free(I);
     free(J);
     free(val);
     free(csc_row);
     free(csc_col);
-    
+
     return 0;
 }
