@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --time=00:10:00
 #SBATCH --partition=batch
-#SBATCH --cpus-per-task=20  
+
 cd final
 
 rm -r results
