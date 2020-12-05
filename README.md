@@ -5,6 +5,7 @@
 
 
 ### **HOW TO USE**
+**Αρχείο ```Makefile```:**  
    + Με χρήση της εντολής ```make all``` δημιουργούνται όλα τα ζητούμενα αρχεία.
    + Με την εντολή ``` make test_v3``` τρέχει τους πέντε πίνακες με την v3, v3_cilk με 4 workers, v3_openMP με 4 threads
    + Με την εντολή ``` make test_v4``` τρέχει τους πέντε πίνακες με την v4, v4_cilk με 4 workers, v4_openMP με 4 threads
@@ -16,9 +17,18 @@
    + ```./v3_openMp ./matrices/dblp-2010.mtx 4```  
    + ```./v4_cilk ./matrices/com-Youtube.mtx 8```  
    
-   
-ΤΟΔΟΟ ΓΙΑ ΤΟ ΣΚΡΙΠΤΑΚΙ
-   
+
+**Αρχείο ```submit_sequential```:**
+   + δημιουργεί τα αρχεία v3.txt και v4.txt
+   + τρέχει τα v3 και v4 με τους πέντε πίνακες
+      
+      
+**Αρχείο ```submit_parallel```:**  
+   + δημιουργεί τα αρχεία v3_cilk.txt, v3_openMP.txt, v4_cilk.txt, v4_openMP.txt
+   + τρέχει τα v3_cilk, v3_openMP, v4_cilk, v4_openMP με τους πέντε πίνακες
+   + χρησιμοποιεί 2, 4, 5, 10, 15 και 20 workers και threads αντίστοιχα
+     
+
 
 ### Ανάλυση V3
 
