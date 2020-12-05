@@ -18,12 +18,12 @@
    + ```./v4_cilk ./matrices/com-Youtube.mtx 8```  
    
 
-**Αρχείο ```submit_sequential```:**
+**Αρχείο ```submit_sequential.sh```:**
    + δημιουργεί τα αρχεία v3.txt και v4.txt
    + τρέχει τα v3 και v4 με τους πέντε πίνακες
       
       
-**Αρχείο ```submit_parallel```:**  
+**Αρχείο ```submit_parallel.sh```:**  
    + δημιουργεί τα αρχεία v3_cilk.txt, v3_openMP.txt, v4_cilk.txt, v4_openMP.txt
    + τρέχει τα v3_cilk, v3_openMP, v4_cilk, v4_openMP με τους πέντε πίνακες
    + χρησιμοποιεί 2, 4, 5, 10, 15 και 20 workers και threads αντίστοιχα
