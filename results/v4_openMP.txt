@@ -1,0 +1,17 @@
+v4_openMP results
+Number of threads: 2 4 5 10 15 20 40
+Running v4_openMP for matrix: ./matrices/belgium_osm.mtx
+0.408234 0.834361 0.907804 1.129239 1.322111 0.957454 1.412737 
+
+Running v4_openMP for matrix: ./matrices/com-Youtube.mtx
+15.697133 16.354739 16.788621 18.553813 19.944654 20.397520 30.364081 
+
+Running v4_openMP for matrix: ./matrices/dblp-2010.mtx
+0.392149 0.420376 0.436240 0.420185 0.497917 0.541389 0.566438 
+
+Running v4_openMP for matrix: ./matrices/mycielskian13.mtx
+3.827866 4.038416 4.216509 5.027114 6.190566 6.637170 4.121751 
+
+Running v4_openMP for matrix: ./matrices/NACA0015.mtx
+1.035767 0.959249 1.154263 1.203759 1.524997 1.375410 1.549325 
+
