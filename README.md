@@ -66,4 +66,13 @@ H υλοποίηση στην V4 μπορεί να αποτυπωθεί στα �
 | com-Youtube | 11.810333 | 16.354739|
 |  dblp-2010  | 0.401437 | 0.420376 |
 |mycielskian13| 2.769288 | 4.038416 |
-|  NACA0015   | 1.578928 | 0.959249 |
+|  NACA0015   | 1.578928 | 0.959249 |  
+
+
+### **Διαγράμματα**
+
+![belgium_osm](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/belgium_osm.png)  
+
+
+
+
