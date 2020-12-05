@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <time.h>
 #include <omp.h>
-#include <pthread.h> 
 
 #define BILLION 1000000000L;
 
@@ -67,7 +66,9 @@ void coo2csc(
     }
 }
 
-// time calculate fn
+/**
+ * Function that calculates Execution time in seconds
+ */
 double calculateExecutionTime()
 {
 
@@ -80,14 +81,13 @@ double calculateExecutionTime()
     return dSeconds + dNanoSeconds;
 }
 
-
 int main(int argc, char *argv[])
 {
     int ret_code;
     MM_typecode matcode;
     FILE *f;
     int M, N, nz;
-    int i, *I, *J;
+    int *I, *J;
     double *val;
 
     if (argc < 2)
@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    /* find out size of sparse matrix .... */
+    /* find out size of sparse COO matrix .... */
 
     if ((ret_code = mm_read_mtx_crd_size(f, &M, &N, &nz)) != 0)
         exit(1);
@@ -137,7 +137,7 @@ int main(int argc, char *argv[])
 
     if (!mm_is_pattern(matcode))
     {
-        for (i = 0; i < nz; i++)
+        for (int i = 0; i < nz; i++)
         {
             fscanf(f, "%d %d %lg\n", &I[i], &J[i], &val[i]);
             I[i]--; /* adjust from 1-based to 0-based */
@@ -146,7 +146,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        for (i = 0; i < nz; i++)
+        for (int i = 0; i < nz; i++)
         {
             fscanf(f, "%d %d\n", &I[i], &J[i]);
             val[i] = 1;
@@ -158,6 +158,9 @@ int main(int argc, char *argv[])
     if (f != stdin)
         fclose(f);
 
+    /* COO matrix has been created */
+
+    /* reserve memory for CSC matrices */
 
     const uint32_t nnz = nz;
     const uint32_t n = N;
@@ -175,74 +178,88 @@ int main(int argc, char *argv[])
     // for (i = 0; i < n+1; i++)
     //     fprintf(stdout, "%d ", csc_col[i]);
 
-
     printf("CSC matrix has been created.\n");
 
-    int counter = 0;
-    int c3[(int)N];
-    for (int w = 0; w < N; w++)
-    {
-        c3[w] = 0;
-    }
-    
+    /* Initialize numOfTriangles counter and c3 vector */
 
-    int thread_count = 8;
-    printf("Start counting the triangles and start the time...\n");
-    pthread_mutex_t m; //define the lock
-    pthread_mutex_init(&m,NULL);
-    clock_gettime(CLOCK_MONOTONIC, &start_time);
-    #pragma omp parallel for schedule(static, 1) num_threads(thread_count)
-    for (uint32_t i = 1; i < N - 1; i++)
+    int numOfTriangles = 0;
+    int c3[(int)N];
+    for (int i = 0; i < N; i++)
     {
-        // i pointer in csc_col array
-        // printf("i = %d\t", i);
-        for (uint32_t j = csc_col[i - 1]; j < csc_col[i]; j++)
+        c3[i] = 0;
+    }
+
+    /* Create omp lock to avoid data racing */
+
+    omp_lock_t writelock;
+    omp_init_lock(&writelock);
+
+    /* Change number of threads */
+
+    int thread_count = atoi(argv[2]);
+    printf("There are %d threads running this algorithm.\n",thread_count);
+
+    /* Starting the Algorithm that counts the vector c3 */
+
+    printf("Start counting the triangles with V3 OpenMP algorithm.\n");
+    clock_gettime(CLOCK_MONOTONIC, &start_time);
+    #pragma omp parallel for schedule(dynamic, 1) num_threads(thread_count)
+    for (int i = 1; i < N - 1; i++)
+    {
+        #pragma omp parallel for schedule(dynamic, 1) num_threads(thread_count)
+        for (int j = csc_col[i - 1]; j < csc_col[i]; j++)
         {
-            // j pointer in (csc_row[i] - csc_row[i-1]) array
-            // printf("j = %d", j);
-            for (uint32_t k = csc_col[csc_row[j]]; k < csc_col[csc_row[j] + 1]; k++)
+            for (int k = csc_col[csc_row[j]]; k < csc_col[csc_row[j] + 1]; k++)
             {
-                // k pointer in csc_row array
                 if (k > nnz - 1)
                     break;
-                //printf("k = %d\n", k);
-                for (uint32_t l = j + 1; l < csc_col[i]; l++)
+                for (int l = j + 1; l < csc_col[i]; l++)
                 {
                     if (csc_row[k] == csc_row[l])
                     {   
-                        #pragma omp atomic
-                        counter += 1;
-                        // c3[i - 1] += 1;
-                        // c3[csc_row[j]] += 1;
-                        // c3[csc_row[k]] += 1;
-                        //printf("csc_row[k] = %d\t", csc_row[k]);
-                        //printf("csc_row[l] = %d\t", csc_row[l]);
-                        //printf("\nFound Triangle with nodes: i j k = %d %d %d", i - 1, csc_row[j], csc_row[k]);
-                        //printf("\n\n");
+                        omp_set_lock(&writelock);
+                        c3[i - 1] += 1;
+                        c3[csc_row[j]] += 1;
+                        c3[csc_row[k]] += 1;
+                        omp_unset_lock(&writelock);
                     }
                 }
-                
-                
-                
             }
         }
     }
+
+    /* Ending the Algorithm that counts the vector c3 */
+
+    /* Calculate the execution time for the algorithm */
+
     double time = calculateExecutionTime();
 
-    // printf("c3 = ");
-    // for (int w = 0; w < N; w++)
-    // {
-    //     printf("%d ", c3[w]);
-    // }
-    printf("Num of Triangles = %d ", counter);
+    /* Delete omp lock */
 
-    printf("\nv3 using OpenMP running time: %f\n", time);
+    omp_destroy_lock(&writelock);
+
+    // printf("c3 = ");
+    // for (int i = 0; i < N; i++)
+    // {
+    //     printf("%d ", c3[i]);
+    // }
+
+    /* Using c3 to calculate the numOfTriangles */
+
+    for (int i = 0; i < N; i++)
+    {
+        numOfTriangles += c3[i];
+    }
+    printf("Num of Triangles = %d ", numOfTriangles / 3);
+    printf("\nV3 using OpenMp running time: %f\n", time);
+
+    /* Deallocate used memory */
 
     free(I);
     free(J);
     free(val);
     free(csc_row);
     free(csc_col);
-    
+
     return 0;
 }
