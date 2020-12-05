@@ -6,8 +6,8 @@
 
 ### **HOW TO USE**
    + Με χρήση της εντολής ```make all``` δημιουργούνται όλα τα ζητούμενα αρχεία.
-   + Με την εντολή ``` make test_v3``` τρέχει τους τέσσερις πίνακες με την v3, v3_cilk με 4 workers, v3_openMP με 4 threads
-   + Με την εντολή ``` make test_v4``` τρέχει τους τέσσερις πίνακες με την v4, v4_cilk με 4 workers, v4_openMP με 4 threads
+   + Με την εντολή ``` make test_v3``` τρέχει τους πέντε πίνακες με την v3, v3_cilk με 4 workers, v3_openMP με 4 threads
+   + Με την εντολή ``` make test_v4``` τρέχει τους πέντε πίνακες με την v4, v4_cilk με 4 workers, v4_openMP με 4 threads
    + H v3_cilk και η v4_cilk έχουν by default 2 workers
    + H v3_openMP και η v4_openMP έχουν by default 2 threads  
    
