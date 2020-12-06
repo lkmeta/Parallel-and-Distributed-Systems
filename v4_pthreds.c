@@ -89,46 +89,6 @@ double calculateExecutionTime()
     return dSeconds + dNanoSeconds;
 }
 
-// CSC format for lower half of matrix and v = [1 ... 1]
-void matrixVectorMultiply(uint32_t *csc_col, uint32_t *csc_row, uint32_t *val, uint32_t *c3, uint32_t N)
-{
-
-    c3[0] = 0;
-    for (uint32_t j = csc_col[0]; j < csc_col[1]; ++j)
-    {
-        c3[0] += val[j];
-        // printf("\tj = %d\tval[%d] = %d\tc3[%d] = %d\n", j, j, val[j], 0, c3[0]);
-    }
-
-    for (uint32_t i = 1; i < N; ++i)
-    {
-        c3[i] = 0;
-        // printf("i = %d\n", i);
-        // printf("cscol[i] = %d\n", csc_col[i]);
-        for (uint32_t j = csc_col[i]; j < csc_col[i + 1]; ++j)
-        {
-            c3[i] += val[j];
-            // printf("\tj = %d\tval[%d] = %d\tc3[%d] = %d\n", j, j, val[j], i, c3[i]);
-        }
-
-        // printf("\n");
-        for (uint32_t j = 0; j < csc_col[i]; ++j)
-        {
-            if (csc_row[j] == i)
-            {
-                c3[i] += val[j];
-            }
-            // printf("\tj = %d\tval[%d] = %d\tc3[%d] = %d\n", j, j, val[j], i, c3[i]);
-        }
-    }
-    
-    for (uint32_t i = 0; i < N; ++i)
-    {
-        c3[i] = c3[i]/2;
-    }
-
-}
-
 // CSC format for whole matrix
 void matrixVectorMultiply2(uint32_t *csc_col, uint32_t *csc_row, uint32_t *val, uint32_t* v, uint32_t *c3, uint32_t N)
 {
