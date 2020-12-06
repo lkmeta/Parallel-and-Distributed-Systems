@@ -83,7 +83,8 @@ H υλοποίηση στην V4 μπορεί να αποτυπωθεί στα �
 |  NACA0015   | 1.155859  | 1.578928 | 0.959249 |  
 
 
-### **Διαγράμματα**
+### **Διαγράμματα**  
+Τα παρακάτω διαγράμματα προέκυψαν για τους πέντε πίνακες με χρήση των v3_cilk, v3_openMP, v4_cilk και v4_openMP αλγορίθμων για διαφορετικούς αριθμούς πυρήνων. Οι μετρήσεις έγιναν με την χρήση scripts στην συστοιχία και τα διαγράμματα μέσω του Matlab.  
 
 ![belgium_osm](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/belgium_osm.png)  
 
