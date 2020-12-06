@@ -97,4 +97,4 @@ H υλοποίηση στην V4 μπορεί να αποτυπωθεί στα �
 ![NACA0015](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/NACA0015.png)  
 
 ### **Διάγραμμα για σύγκριση χρόνων v3 με v4 με χρήση του Excel**
-![v3_v4](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/v3_v4.png)
+![v3_v4](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/v3_v4_excel.png)
