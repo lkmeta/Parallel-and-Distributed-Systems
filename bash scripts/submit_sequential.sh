@@ -3,7 +3,7 @@
 #SBATCH --partition=batch
 #SBATCH --cpus-per-task=2 
 
-cd Desktop
+rm -r results
 
 make clean
 
