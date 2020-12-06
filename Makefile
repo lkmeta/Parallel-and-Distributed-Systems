@@ -69,11 +69,11 @@ test2:
 test3:
 	@printf "\n==================================================\n"
 	@printf "==================================================\n"
-	@printf "\n** Testing v3 with com-Youtube.mtx\n"
+	@printf "\n** Testing v3 with belgium_osm.mtx\n"
 	./v3 ./matrices/belgium_osm.mtx
-	@printf "\n** Testing v3_cilk with com-Youtube.mtx with 4 workers\n"
+	@printf "\n** Testing v3_cilk with belgium_osm.mtx with 4 workers\n"
 	./v3_cilk ./matrices/belgium_osm.mtx 4
-	@printf "\n** Testing v3_openMp with com-Youtube.mtx with 4 threads\n"
+	@printf "\n** Testing v3_openMp with belgium_osm.mtx with 4 threads\n"
 	./v3_openMP ./matrices/belgium_osm.mtx 4
 	@printf "\n==================================================\n"
 	@printf "==================================================\n"
