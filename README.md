@@ -1,7 +1,7 @@
 # **Παράλληλα και Διανεμημένα Συστήματα**  
 ## **1η Άσκηση**
-## Ούρδας Αντώνιος <br /> | ΑΕΜ : 9358 | Email: ourdasav@ece.auth.gr
-## Μέτα Λουίς-Κοσμάς <br /> | AEM : 9390 | Email: louismeta@ece.auth.gr  
+## Ούρδας Αντώνιος <br /> | ΑΕΜ : 9358 | Email: ourdasav@ece.auth.gr |
+## Μέτα Λουίς-Κοσμάς <br /> | AEM : 9390 | Email: louismeta@ece.auth.gr |  
 
 
 ### **How to build**  
