@@ -93,7 +93,7 @@ H υλοποίηση στην V4 μπορεί να αποτυπωθεί στα �
 
 ![mycielskian](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/mycielskian.png) 
 
-![NACA0015](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/NACA0015.png)  
+![NACA0015](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/NACA0015.png)  
 
 
 
