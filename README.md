@@ -18,12 +18,12 @@
    + ```./v4_cilk ./matrices/com-Youtube.mtx 8```  
    
 
-**Αρχείο ```submit_sequential.sh```:**
+**Script ```submit_sequential.sh```:**
    + δημιουργεί τα αρχεία v3.txt και v4.txt
    + τρέχει τα v3 και v4 με τους πέντε πίνακες
       
       
-**Αρχείο ```submit_parallel.sh```:**  
+**Script ```submit_parallel.sh```:**  
    + δημιουργεί τα αρχεία v3_cilk.txt, v3_openMP.txt, v4_cilk.txt, v4_openMP.txt
    + τρέχει τα v3_cilk, v3_openMP, v4_cilk, v4_openMP με τους πέντε πίνακες
    + χρησιμοποιεί 2, 4, 5, 10, 15 και 20 πυρήνες 
@@ -81,7 +81,15 @@ H υλοποίηση στην V4 μπορεί να αποτυπωθεί στα �
 
 ### **Διαγράμματα**
 
-![belgium_osm](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/belgium_osm.png)  
+![belgium_osm](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/belgium_osm.png)  
+
+![com-Youtube](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/com-Youtube.png)  
+
+![dblp_2010](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/dblp_2010.png)  
+
+![mycielskian](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/mycielskian.png) 
+
+![NACA0015](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/NACA0015.png)  
 
 
 
