@@ -87,11 +87,11 @@ H υλοποίηση στην V4 μπορεί να αποτυπωθεί στα �
 
 ![belgium_osm](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/belgium_osm.png)  
 
-![com-Youtube](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/com-Youtube.png)  
+![com-Youtube](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/com-Youtube.png)  
 
-![dblp_2010](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/dblp_2010.png)  
+![dblp_2010](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/dblp_2010.png)  
 
-![mycielskian](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/mycielskian.png) 
+![mycielskian](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/mycielskian.png) 
 
 ![NACA0015](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/NACA0015.png)  
 
