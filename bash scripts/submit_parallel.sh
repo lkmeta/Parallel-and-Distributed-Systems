@@ -2,8 +2,6 @@
 #SBATCH --time=00:10:00
 #SBATCH --partition=batch
 
-cd final
-
 rm -r results
 
 make clean
@@ -78,6 +76,3 @@ for file in ./matrices/*; do
 	echo "" >> ./results/v4_openMP.txt
 	echo "" >> ./results/v4_openMP.txt
 done
-
-
-cd ..
