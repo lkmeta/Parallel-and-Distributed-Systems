@@ -87,7 +87,7 @@ double calculateExecutionTime()
 /**
  * Mutiply whole matrix in CSC format with vector
  */
-void matrixVectorMultiply2(uint32_t *csc_col, uint32_t *csc_row, uint32_t *val, uint32_t *v, uint32_t *c3, int N)
+void matrixVectorMultiply(uint32_t *csc_col, uint32_t *csc_row, uint32_t *val, uint32_t *v, uint32_t *c3, int N)
 {
     for (int i = 0; i < N; ++i)
     {
@@ -382,7 +382,7 @@ int main(int argc, char *argv[])
     }
     /* Calculate C * e product*/
 
-    matrixVectorMultiply2(csc_col, csc_row, value, v, c3, N);
+    matrixVectorMultiply(csc_col, csc_row, value, v, c3, N);
 
     /* Ending the Algorithm that counts the vector c3 */
 
