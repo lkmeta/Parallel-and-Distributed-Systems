@@ -87,13 +87,13 @@ H υλοποίηση στην V4 μπορεί να αποτυπωθεί στα �
 Τα παρακάτω διαγράμματα προέκυψαν για τους πέντε πίνακες με χρήση των v3_cilk, v3_openMP, v4_cilk και v4_openMP αλγορίθμων για διαφορετικούς αριθμούς πυρήνων. Οι μετρήσεις έγιναν με την χρήση scripts στην συστοιχία και τα διαγράμματα μέσω του Matlab.  
 
 ![belgium_osm](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/belgium_osm.png)  
-
+---
 ![com-Youtube](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/com-Youtube.png)  
-
+---
 ![dblp_2010](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/dblp_2010.png)  
-
+---
 ![mycielskian](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/mycielskian.png) 
-
+---
 ![NACA0015](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/NACA0015.png)  
 
 
