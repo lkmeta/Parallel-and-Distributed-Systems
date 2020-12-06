@@ -5,6 +5,12 @@ CFLAGS=-O3
 
 default: all
 
+v1:
+	$(CC) $(CFLAGS) -o v1 v1.c
+
+v2:
+	$(CC) $(CFLAGS) -o v2 v2.c
+
 v3:
 	$(CC) $(CFLAGS) -o v3 v3.c mmio.c
 
@@ -25,12 +31,11 @@ v4_openMP:
 
 .PHONY: clean
 
-all: v3 v3_cilk v3_openMP v4 v4_cilk v4_openMP
+all: v1 v2 v3 v3_cilk v3_openMP v4 v4_cilk v4_openMP
 
 test_v3: test1 test2 test3 test4 test5
 
 test_v4: test6 test7 test8 test9 test10
-
 
 test1:
 	@printf "\n==================================================\n"
@@ -59,11 +64,11 @@ test2:
 test3:
 	@printf "\n==================================================\n"
 	@printf "==================================================\n"
-	@printf "\n** Testing v3 with belgium_osm.mtx\n"
+	@printf "\n** Testing v3 with com-Youtube.mtx\n"
 	./v3 ./matrices/belgium_osm.mtx
-	@printf "\n** Testing v3_cilk with belgium_osm.mtx with 4 workers\n"\n"
+	@printf "\n** Testing v3_cilk with com-Youtube.mtx with 4 workers\n"
 	./v3_cilk ./matrices/belgium_osm.mtx 4
-	@printf "\n** Testing v3_openMp with belgium_osm.mtx with 4 threads\n"
+	@printf "\n** Testing v3_openMp with com-Youtube.mtx with 4 threads\n"
 	./v3_openMP ./matrices/belgium_osm.mtx 4
 	@printf "\n==================================================\n"
 	@printf "==================================================\n"
@@ -154,4 +159,4 @@ test10:
 	@printf "==================================================\n"
 
 clean:
-	rm v3 v3_cilk v3_openMP v4 v4_cilk v4_openMP
+	rm v1 v2 v3 v3_cilk v3_openMP v4 v4_cilk v4_openMP
