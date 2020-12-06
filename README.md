@@ -85,7 +85,7 @@ H υλοποίηση στην V4 μπορεί να αποτυπωθεί στα �
 
 ### **Διαγράμματα**
 
-![belgium_osm](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/belgium_osm.png)  
+![belgium_osm](https://raw.githubusercontent.com/lkmeta/Parallel-and-Distributed-Systems/main/Matlab%20Figures/belgium_osm.png)  
 
 ![com-Youtube](https://github.com/lkmeta/Parallel-and-Distributed-Systems/blob/main/Matlab%20Figures/PNG/com-Youtube.png)  
 
